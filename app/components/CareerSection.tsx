@@ -55,41 +55,37 @@ export default function CareerSection() {
       >
         경력
       </motion.h2>
-        <motion.table
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
-          className="min-w-full bg-white/10 overflow-hidden"
-        >
-          <thead>
-            <tr>
-              <th className="px-6 py-4 text-left text-lg font-semibold">
-                기간
-              </th>
-              <th className="px-6 py-4 text-left text-lg font-semibold">
-                활동 내용
-              </th>
+      <motion.table
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="min-w-full bg-white/10 overflow-hidden"
+      >
+        <thead>
+          <tr>
+            <th className="text-left text-lg font-semibold">기간</th>
+            <th className="text-left text-lg font-semibold">활동 내용</th>
+          </tr>
+        </thead>
+        <tbody>
+          {timelineItems.map((item) => (
+            <tr key={item.year} className="border-t border-white/20">
+              <td className="py-4 align-top whitespace-nowrap font-medium text-base w-32">
+                {item.year}
+              </td>
+              <td className="py-4">
+                <ul className="list-disc ml-4 space-y-1">
+                  {item.content.map((text, i) => (
+                    <li key={i} className="text-base">
+                      {text}
+                    </li>
+                  ))}
+                </ul>
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {timelineItems.map((item) => (
-              <tr key={item.year} className="border-t border-white/20">
-                <td className="px-6 py-4 align-top whitespace-nowrap font-medium text-base w-32">
-                  {item.year}
-                </td>
-                <td className="px-6 py-4">
-                  <ul className="list-disc ml-4 space-y-1">
-                    {item.content.map((text, i) => (
-                      <li key={i} className="text-base">
-                        {text}
-                      </li>
-                    ))}
-                  </ul>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+          ))}
+        </tbody>
       </motion.table>
     </div>
   );

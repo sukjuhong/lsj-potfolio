@@ -119,8 +119,8 @@ const InfiniteScroll = ({
         className={`flex gap-x-4 ${
           direction === "right" ? "flex-row-reverse" : ""
         }`}
-        initial={{ x: direction === "left" ? - 2 * moveBy : 2 * moveBy }}
-        animate={{ x: direction === "left" ? - moveBy : moveBy }}
+        initial={{ x: direction === "left" ? -2 * moveBy : 2 * moveBy }}
+        animate={{ x: direction === "left" ? -moveBy : moveBy }}
         transition={{
           x: {
             repeat: Infinity,
@@ -170,9 +170,11 @@ export default function MoreWorksSection() {
       >
         작품 목록
       </motion.h1>
-      <InfiniteScroll direction="right" items={topWorks} />
-      <InfiniteScroll direction="left" items={middleWorks} />
-      <InfiniteScroll direction="right" items={bottomWorks} />
+      <div className="flex flex-col gap-y-8">
+        <InfiniteScroll direction="right" items={topWorks} />
+        <InfiniteScroll direction="left" items={middleWorks} />
+        <InfiniteScroll direction="right" items={bottomWorks} />
+      </div>
     </div>
   );
 }

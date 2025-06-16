@@ -15,7 +15,7 @@ export default function WorkSection() {
       >
         대표작
       </motion.h1>
-      <div className="flex gap-x-4 p-4">
+      <div className="flex gap-x-4">
         <motion.div
           initial={{ opacity: 0, x: -50 }}
           whileInView={{ opacity: 1, x: 0 }}
