@@ -13,15 +13,15 @@ export default function ContactSection() {
       >
         연락처
       </motion.h1>
-      <div className="flex flex-col gap-y-4">
-        <div className="flex-1 bg-white rounded-lg p-4 flex flex-col gap-y-2">
+      <div className="flex flex-col gap-y-8">
+        <div className="flex-1 bg-white rounded-lg flex flex-col gap-y-2">
           <h2 className="text-2xl font-bold flex items-center gap-x-2">
             <MdEmail />
             Email
           </h2>
           <p className="text-gray-600">lsy1127@example.com</p>
         </div>
-        <div className="flex-1 bg-white rounded-lg p-4 flex flex-col gap-y-2">
+        <div className="flex-1 bg-white rounded-lg flex flex-col gap-y-2">
           <h2 className="text-2xl font-bold flex items-center gap-x-2">
             <MdPhone />
             Phone
