@@ -97,8 +97,8 @@ const works = [
   },
 ];
 
-const ITEM_WIDTH = 256; // tailwind w-64 = 16rem = 256px
-const GAP = 16; // gap-4 = 1rem = 16px
+const ITEM_WIDTH = 256;
+const GAP = 16;
 
 const InfiniteScroll = ({
   direction,
@@ -114,18 +114,18 @@ const InfiniteScroll = ({
   const moveBy = duplicatedWidth / 3; // 실제 보여줄 구간 길이
 
   return (
-    <div ref={containerRef} className="relative w-full overflow-hidden">
+    <div ref={containerRef} className="relative">
       <motion.div
-        className={`flex gap-4 ${
+        className={`flex gap-x-4 ${
           direction === "right" ? "flex-row-reverse" : ""
         }`}
-        initial={{ x: 0 }}
-        animate={{ x: direction === "left" ? -moveBy : moveBy }}
+        initial={{ x: direction === "left" ? - 2 * moveBy : 2 * moveBy }}
+        animate={{ x: direction === "left" ? - moveBy : moveBy }}
         transition={{
           x: {
             repeat: Infinity,
             repeatType: "loop",
-            duration: 20,
+            duration: 15,
             ease: "linear",
           },
         }}
@@ -134,9 +134,7 @@ const InfiniteScroll = ({
           <Link href={`/works/${work.id}`} key={`${work.id}-${index}`}>
             <motion.div
               className={`
-                w-64 sm:w-60 md:w-56 lg:w-64
-                min-w-[12rem] sm:min-w-[14rem] md:min-w-[16rem]
-                h-72 sm:h-80 md:h-96
+                w-64 h-42
                 ${work.color} rounded-lg shadow-lg
                 flex items-center justify-center cursor-pointer
               `}
@@ -162,18 +160,19 @@ export default function MoreWorksSection() {
     .slice(0, 5);
 
   return (
-    <div className="min-h-screen py-8 overflow-hidden">
-      <div className="space-y-8">
-        <div className="overflow-hidden">
-          <InfiniteScroll direction="right" items={topWorks} />
-        </div>
-        <div className="overflow-hidden">
-          <InfiniteScroll direction="left" items={middleWorks} />
-        </div>
-        <div className="overflow-hidden">
-          <InfiniteScroll direction="right" items={bottomWorks} />
-        </div>
-      </div>
+    <div className="h-full flex flex-col gap-y-8">
+      <motion.h1
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+        viewport={{ once: true }}
+        className="text-4xl font-bold"
+      >
+        작품 목록
+      </motion.h1>
+      <InfiniteScroll direction="right" items={topWorks} />
+      <InfiniteScroll direction="left" items={middleWorks} />
+      <InfiniteScroll direction="right" items={bottomWorks} />
     </div>
   );
 }
